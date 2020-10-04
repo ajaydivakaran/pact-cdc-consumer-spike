@@ -12,8 +12,9 @@ public class QuoteRepository {
         this.restTemplate = restTemplate;
     }
 
-    public String getRandomQuote() {
-        final QuoteResponse quoteResponse = restTemplate.getForObject("/quote", QuoteResponse.class);
+    public String getRandomQuote(String id) {
+        final QuoteResponse quoteResponse = restTemplate
+                .getForObject(String.format("/quote?id=%s", id), QuoteResponse.class);
         return quoteResponse.getMessage();
     }
 }
